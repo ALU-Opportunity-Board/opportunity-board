@@ -1,14 +1,14 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import reactLogo from './assets/react.svg';
-import viteLogo from '../../../../vite.svg';
+import viteLogo from '../public/vite.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App0">
+    <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -20,7 +20,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button type="submit" onClick={() => setCount((c) => c + 1)}>
-          count is {count}
+          count on tiop {count}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
