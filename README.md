@@ -81,5 +81,5 @@ opportunity-board is licensed under the MIT License - see the [LICENSE](https://
 
 <a href="https://github.com/ALU-Opportunity-Board
 /opportunity-board/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=rohitdasu/opportunity-board" />
+<img src="https://contrib.rocks/image?repo=ALU-Opprtunity-Board/opportunity-board" />
 </a>
