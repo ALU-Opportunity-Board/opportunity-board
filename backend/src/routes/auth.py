@@ -9,6 +9,7 @@ apply the @login_is_required for users just like applied below
 """
 
 """ when dealing with OAuth 2.0 app secret is necessary"""
+
 import os
 import pathlib
 import requests
@@ -18,7 +19,6 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
-
 AUTH_BLUEPRINT = Blueprint("auth", __name__)
 GOOGLE_CLIENT_ID = config.GOOGLE_CLIENT_ID
 """this is to set environment to https because OAuth 2.0 only supports https environments"""
@@ -73,9 +73,12 @@ def index():
     else:
         return "logged out"
 
+
 """"
     Asking the flow class for the authorization (login) url
 """
+
+
 @AUTH_BLUEPRINT.route("/login")
 def login():
     """ Asking the flow class for the authorization (login) url
@@ -89,6 +92,7 @@ def login():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
     return redirect(authorization_url)
+
 
 @AUTH_BLUEPRINT.route("/callback")
 def callback():
@@ -121,18 +125,9 @@ def callback():
     '''page to redirect to after authorization'''
     return id_info
 
+
 @AUTH_BLUEPRINT.route("/logout")
 def logout():
     """ This is to clear the session and log the user out """
     session.clear()
     return redirect(url_for("auth.index"))
-
-
-
-
-
-
-
-
-
-
