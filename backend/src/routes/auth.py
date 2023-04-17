@@ -14,7 +14,7 @@ import os
 import pathlib
 import requests
 import config
-from flask import session, abort, redirect, request, Blueprint, url_for
+from flask import jsonify, session, abort, redirect, request, Blueprint, url_for
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -123,7 +123,10 @@ def callback():
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     '''page to redirect to after authorization'''
-    return id_info
+    # store the user data in the session which will be return by
+    # get_user_data function
+    session["user_data"] = id_info
+    return "Successfully logged in"
 
 
 @AUTH_BLUEPRINT.route("/logout")
@@ -131,3 +134,37 @@ def logout():
     """ This is to clear the session and log the user out """
     session.clear()
     return redirect(url_for("auth.index"))
+
+
+@AUTH_BLUEPRINT.route("/user-data")
+@login_is_required
+def get_user_data():
+    """Return all the user data returned by Google
+    ---
+    responses:
+        200:
+            description: Return all the user data returned by Google
+            schema:
+                type: object
+                example:
+                            {
+                                "at_hash": "gy-uRqy-ckp1xtCVqalMyA",
+                                "aud": "5713982095317-p6vv1kttnbjr60u0rs7i8nmkurlft5mj.apps.googleusercontent.com",
+                                "azp": "5713982095317-p6vv1kttdgjr60u0rs7i8nmkurlft5mj.apps.googleusercontent.com",
+                                "email": "a.kebede@alustudent.com",
+                                "email_verified": true,
+                                "exp": 1681768052,
+                                "family_name": "Kebede",
+                                "given_name": "Abebe",
+                                "hd": "alustudent.com",
+                                "iat": 1681464452,
+                                "iss": "https://accounts.google.com",
+                                "locale": "en",
+                                "name": "Abebe Kebede",
+                                "picture": "https://lh3.googleusercontent.com/a/AGNmyxayr4UVXSZBNsx8xfeg1NCZxX24vJOASE4AF2gr=s96-c",
+                                "sub": "10505877750333961075"
+                                }
+                            
+    """
+    return jsonify(session["user_data"])
+    
