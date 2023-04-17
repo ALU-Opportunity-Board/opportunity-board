@@ -646,6 +646,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@remix-run/router@npm:1.5.0"
+  checksum: cf03a9bcd86aea571173ba496e7f2ab1ee70c3c94df2f80dcc9274d111d9d35e113d9f3af065911dcfc5cf2692678ea58e23dbe051d2d3ace7c47530416e8b37
+  languageName: node
+  linkType: hard
+
 "@sinclair/typebox@npm:^0.25.16":
   version: 0.25.24
   resolution: "@sinclair/typebox@npm:0.25.24"
@@ -1465,6 +1472,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-variance-authority@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-variance-authority@npm:0.5.1"
+  peerDependencies:
+    typescript: ">= 4.5.5 < 6"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 1df1099fbadf2fd55bad772137aa4c77a1f1b1f2ed4221a7ff237064a1482e2af20c9a1c62778cbc2a10a3516b15c462d213f5fe90817112850d67d02a1a2a0a
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -1484,6 +1503,8 @@ __metadata:
     "@typescript-eslint/parser": "npm:^5.54.1"
     "@vitejs/plugin-react": "npm:^3.1.0"
     autoprefixer: "npm:^10.4.14"
+    class-variance-authority: "npm:^0.5.1"
+    clsx: "npm:^1.2.1"
     eslint: "npm:^8.35.0"
     eslint-config-airbnb: "npm:^19.0.4"
     eslint-config-airbnb-typescript: "npm:^17.0.0"
@@ -1494,15 +1515,27 @@ __metadata:
     eslint-plugin-react: "npm:^7.32.2"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     jsdom: "npm:^21.1.0"
+    lucide-react: "npm:^0.130.0"
     postcss: "npm:^8.4.21"
     prettier: "npm:^2.8.4"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-icons: "npm:^4.8.0"
+    react-router-dom: "npm:^6.10.0"
+    tailwind-merge: "npm:^1.11.0"
     tailwindcss: "npm:^3.3.1"
     typescript: "npm:^4.9.3"
+    typewriter-effect: "npm:^2.19.0"
     vite: "npm:^4.2.0"
   languageName: unknown
   linkType: soft
+
+"clsx@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "clsx@npm:1.2.1"
+  checksum: cae17fd0fd5ea449d000c681169a8a6f7add4929b369cae3e2d5b604fba2798b39334121e467dbf6ac752562c28a6894a443f30761b004317c0668eb031af52d
+  languageName: node
+  linkType: hard
 
 "color-convert@npm:^1.9.0":
   version: 1.9.3
@@ -3487,6 +3520,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-react@npm:^0.130.0":
+  version: 0.130.0
+  resolution: "lucide-react@npm:0.130.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+  checksum: 9749d0700aaa53f94ba49802f52d665dbfda42e57ff76e6aa34b783e60f1288d7728d46c344e7dc3b1072b795732a759cac410bc6bff22beacd44ce37aac735c
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -4016,6 +4058,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"performance-now@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "performance-now@npm:2.1.0"
+  checksum: a0fae1e610b785e04b20ae146033a7ea1e639f1aa583a1d4d01b36be787dfebe31227402a7ef3b1ffb621d04750ca73c17b03ec943f2389f7416f95236a61e31
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -4196,7 +4245,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4242,6 +4291,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raf@npm:^3.4.0":
+  version: 3.4.1
+  resolution: "raf@npm:3.4.1"
+  dependencies:
+    performance-now: "npm:^2.1.0"
+  checksum: edeeb83c7727fba43430c954452e1b4706ce6c4d52fdc6743b1e34e5ba3e8e08bc9e85b237a558441ef10e17e6de53ba19949d92c2b3bbd0561d861fe3282ea8
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -4251,6 +4309,15 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7c5b915fb793d63563cec1f721e059e6ff0e2855ac116ab5cb7450b6c59398f5e25f95c960ce5cb93504cc58ab724a75a78e99282354e702a0e667d0d787d028
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.8.0":
+  version: 4.8.0
+  resolution: "react-icons@npm:4.8.0"
+  peerDependencies:
+    react: "*"
+  checksum: 18ff21e05b3ee10c34dccb930f60956c6124461cc5ef317e81a82bb88b61458f7b5e0afa47e79f24f793785fd3ae6b4775c2e1275cbf20be99fc7578e0b98628
   languageName: node
   linkType: hard
 
@@ -4279,6 +4346,30 @@ __metadata:
   version: 0.14.0
   resolution: "react-refresh@npm:0.14.0"
   checksum: 0dc7d5a197ae193f0bddea2f8d712a2b8477ae401c9e3b04c85d0a046ac7847b24af573923ab4c3ca67735583a6b421edc43b39a07b4d1a46056289249f4f897
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:^6.10.0":
+  version: 6.10.0
+  resolution: "react-router-dom@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": "npm:1.5.0"
+    react-router: "npm:6.10.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 96994291816f9085b7a2e06bc148b67447d1aaf27c0f366b6d7affdad671946fb9117ebd09a68f0da1e2cc403d753bc190df70252d46486d206def81371b60fd
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.10.0":
+  version: 6.10.0
+  resolution: "react-router@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": "npm:1.5.0"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 9976b0829fc47910ee357b410b06f4e09affc8e8d5f683af81f727b51b54e9021c0f067239ef822c9c3f8f170d74d6f41b831c68c9ccbf8bdf8e6caca8df6434
   languageName: node
   linkType: hard
 
@@ -4799,6 +4890,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "tailwind-merge@npm:1.11.0"
+  checksum: fe6eb81955e0dcc017bfc6d7ce2f09085de77d38225512db89950e3d60b64d8d7d237acd5161c7c5f0f4227bcbe0b9acba356ed5da8e3d6aa3065aeac38b45e5
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.3.1":
   version: 3.3.1
   resolution: "tailwindcss@npm:3.3.1"
@@ -5002,6 +5100,19 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 4b4cb92afdc90f15413ef84d30de0a09649d1e795ac4c10e391c2cde92ef6444f6a34081e4536dc9ce5694a65f2424923871275c7e7d422537b0c09f18ed3fb4
+  languageName: node
+  linkType: hard
+
+"typewriter-effect@npm:^2.19.0":
+  version: 2.19.0
+  resolution: "typewriter-effect@npm:2.19.0"
+  dependencies:
+    prop-types: "npm:^15.6.2"
+    raf: "npm:^3.4.0"
+  peerDependencies:
+    react: ^17.x || ^18.x
+    react-dom: ^17.x || ^18.x
+  checksum: ae2a6ae9f400bb218ffb35c3fd1aa53587f85547b9e7f80b598677e39cea20677cb95a4f24f071bb3e1cdb0eb65af43ae2ccf8764cc28c0c10ef3abad6d17a6b
   languageName: node
   linkType: hard
 
