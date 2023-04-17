@@ -19,6 +19,12 @@ CORS(app, supports_credentials=True)
 app.secret_key = config.SECRET_KEY
 # app.config['PERMANENT_SESSION_LIFETIME'] = config.PERMANENT_SESSION_LIFETIME
 
+# api status checker
+@app.route("/status")
+def status():
+    """Returns the status of the API"""
+    return jsonify({"status": "OK"})
+
 # 404 error handler
 @app.errorhandler(404)
 def not_found(error):
