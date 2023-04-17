@@ -25,10 +25,16 @@ def not_found(error):
     """Returns a JSON-formatted 404 status code response"""
     return jsonify({"error": "Not found"}), 404
 
+@app.errorhandler(401)
+def unauthorized(error):
+    """Returns a JSON-formatted 401 status code response"""
+    return jsonify({"error": "Unauthorized"}), 401
+
 @app.errorhandler(500)
 def internal_server_error(error):
     """Returns a JSON-formatted 500 status code response"""
     return jsonify({"error": "Internal server error"}), 500
+
 
 
 if __name__ == "__main__":
