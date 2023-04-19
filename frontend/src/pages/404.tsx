@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
-export default function notFound() {
+export default function NotFound() {
   return (
     <div className="grid h-screen px-4 bg-white place-content-center">
       <div className="text-center">
