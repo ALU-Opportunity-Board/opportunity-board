@@ -26,7 +26,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 """setting path to the parent directory where the .json file from google is kept"""
 client_secrets_file = os.path.join(pathlib.Path(
-    __file__).parent, "client_secret.json")
+    __file__).parent, "../client_secret.json")
 
 """ 
     Flow is OAuth 2.0 class that stores 

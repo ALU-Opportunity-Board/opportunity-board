@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -6,7 +7,7 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import Typewriter from 'typewriter-effect';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import background from '../assets/aluBackground.png';
 import logo from '../assets/alu-logo.png';
@@ -16,6 +17,7 @@ import Paragraph from '../components/ui/Paragraph';
 import { setAuthUser, setIsAuthenticated } from '../reducers/authReducer';
 
 export default function LoginPage() {
+  const user = useSelector((state: any) => state.App.setAuthUser as any) as any;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
