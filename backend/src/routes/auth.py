@@ -26,7 +26,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 """setting path to the parent directory where the .json file from google is kept"""
 client_secrets_file = os.path.join(pathlib.Path(
-    __file__).parent, "client_secret.json")
+    __file__).parent, "../client_secret.json")
 
 """ 
     Flow is OAuth 2.0 class that stores 
@@ -126,7 +126,7 @@ def callback():
     # store the user data in the session which will be return by
     # get_user_data function
     session["user_data"] = id_info
-    return "Successfully logged in"
+    return redirect("/")
 
 
 @AUTH_BLUEPRINT.route("/logout")
