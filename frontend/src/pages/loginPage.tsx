@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import Typewriter from 'typewriter-effect';
 import axios from 'axios';
@@ -17,39 +19,45 @@ import Paragraph from '../components/ui/Paragraph';
 import { setAuthUser, setIsAuthenticated } from '../reducers/authReducer';
 
 export default function LoginPage() {
-  const user = useSelector((state: any) => state.App.setAuthUser as any) as any;
+  // const user = useSelector((state: any) => state.App.authUser as any) as any;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const fetchUser = async () => {
     const currentUser = await axios
-      .get('http://127.0.0.1:5000/callback', { withCredentials: true })
+      .get('http://127.0.0.1:5000/user-data', { withCredentials: true })
       .catch((err) => {
         console.log('Not properly authenticated');
         navigate('/not_found');
       });
+    console.log(currentUser);
     if (currentUser && currentUser.data) {
+      navigate('/home');
       console.log('user', currentUser.data);
       dispatch(setIsAuthenticated(true));
       dispatch(setAuthUser(currentUser.data));
-      navigate('/home');
     }
   };
   const handleAuth = async () => {
     let timer: NodeJS.Timeout | null = null;
-    const googleUrl = 'http://localhost:5000/login';
+    const googleUrl = 'http://127.0.0.1:5000/login';
     const newWindow = window.open(googleUrl, '_blank', 'width=500, height=600');
-
     if (newWindow) {
+      console.log('test1');
       timer = setInterval(() => {
+        console.log('test2');
         if (newWindow.closed) {
           console.log("Yay we're authenticated");
           fetchUser();
           if (timer) clearInterval(timer);
         }
-      }, 500);
+      }, 50);
     }
   };
+
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
+
   return (
     <body
       className="bg-cover bg-center bg-no-repeat h-full"
