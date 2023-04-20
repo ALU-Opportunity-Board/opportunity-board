@@ -17,7 +17,7 @@ app.register_blueprint(AUTH_BLUEPRINT, url_prefix="/")
 
 CORS(app, supports_credentials=True)
 app.secret_key = config.SECRET_KEY
-# app.config['PERMANENT_SESSION_LIFETIME'] = config.PERMANENT_SESSION_LIFETIME
+app.config['PERMANENT_SESSION_LIFETIME'] = 2000
 
 # api status checker
 @app.route("/status")
