@@ -9,10 +9,10 @@ import { Button, buttonVariants } from './ui/Button';
 function Navbar() {
   const [state, setState] = useState(false);
   const navigation = [
-    { title: 'Home', path: '/' },
-    { title: 'Add Oppotunities', path: '/' },
-    { title: 'Support', path: '/' },
-    { title: 'Contact us', path: '/' },
+    { title: 'Home', path: '/home' },
+    { title: 'Add Oppotunities', path: '/opportunity' },
+    { title: 'FaQ', path: '/support' },
+    { title: 'Contact us', path: '/contactUs' },
   ];
   return (
     <div className="fixed backdrop-blur-sm bg-white/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 shadow-sm flex items-center justify-between">
@@ -28,9 +28,11 @@ function Navbar() {
             {navigation.map((item, idx) => {
               return (
                 <li key={idx}>
-                  <Button variant="ghost" size="lg">
-                    {item.title}
-                  </Button>
+                  <a href={item.path}>
+                    <Button variant="ghost" size="lg">
+                      {item.title}
+                    </Button>
+                  </a>
                 </li>
               );
             })}
