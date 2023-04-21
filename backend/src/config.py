@@ -5,7 +5,7 @@ load_dotenv()
 
 
 # Databse configs
-DB_NAME = os.getenv("DB_NAME", 'opportunity_board_db')
+DB_NAME = os.getenv("DB_NAME", 'opportunity_board')
 # DB_TEST_NAME = os.getenv("DB_TEST_NAME", 'opportunity_board_db_test')
 DB_USER = os.getenv("DB_USER", 'postgres')
 DB_PASSWORD = os.getenv("DB_PASSWORD", '')
