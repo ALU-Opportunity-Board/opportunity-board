@@ -19,6 +19,10 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
+from models import User, db
+from db import db_operations
+
+
 AUTH_BLUEPRINT = Blueprint("auth", __name__)
 GOOGLE_CLIENT_ID = config.GOOGLE_CLIENT_ID
 """this is to set environment to https because OAuth 2.0 only supports https environments"""
@@ -44,6 +48,8 @@ flow = Flow.from_client_secrets_file(
 )
 
 
+
+
 def login_is_required(function):
     """ A decorator to check if a user is authorized or not
 
@@ -62,6 +68,24 @@ def login_is_required(function):
             return function()
     return wrapper
 
+
+def add_new_user(id_info):
+     # check if user is already in the database
+    # user = session.query(User).filter_by(email=id_info.get("email")).first()
+    user = db.session.query(User).filter_by(email=id_info.get("email")).first()
+    # print("user retrieved: ", user)
+    if user is None:
+        # get email from google account
+        user_email = id_info.get("email")
+        if user_email.endswith("@alustudent.com"):
+            role = "student"
+        elif user_email.endswith("@alueducation.com"):
+            role = "staff"
+            
+        first_time_user = User(first_name=id_info.get("given_name"), last_name=id_info.get("family_name"), email=id_info.get("email"), picture=id_info.get("picture"), role=role)
+        
+        db_operations.add(first_time_user)
+        db_operations.save()
 
 @AUTH_BLUEPRINT.route("/")
 def index():
@@ -94,6 +118,8 @@ def login():
     return redirect(authorization_url)
 
 
+
+
 @AUTH_BLUEPRINT.route("/callback")
 def callback():
     """ Callback function to get the authorization code.
@@ -124,7 +150,7 @@ def callback():
     session["name"] = id_info.get("name")
     '''page to redirect to after authorization'''
     # store the user data in the session which will be return by
-    # get_user_data function
+    add_new_user(id_info)
     session["user_data"] = id_info
     return redirect("/")
 
