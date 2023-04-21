@@ -1,13 +1,13 @@
 
-
-from . import db
 from datetime import datetime
+import uuid
+from . import db
 # create user table
 class User(db.Model):
     """ The User Model """
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(200), primary_key=True, default=str(uuid.uuid4()))
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(50), nullable=False, unique=True)

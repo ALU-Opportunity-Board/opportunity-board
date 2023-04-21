@@ -19,8 +19,9 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
-from models import User, db
 from db import db_operations
+from models import User, db
+from routes import login_is_required
 
 
 AUTH_BLUEPRINT = Blueprint("auth", __name__)
@@ -48,25 +49,6 @@ flow = Flow.from_client_secrets_file(
 )
 
 
-
-
-def login_is_required(function):
-    """ A decorator to check if a user is authorized or not
-
-    Args:
-        function (_type_): the function to be decorated
-    """
-    def wrapper(*args, **kwargs):
-        """ The wrapper function
-
-        Returns:
-            _type_: the function that is decorated
-        """
-        if "google_id" not in session:
-            return abort(401)
-        else:
-            return function()
-    return wrapper
 
 
 def add_new_user(id_info):
@@ -162,35 +144,4 @@ def logout():
     return redirect(url_for("auth.index"))
 
 
-@AUTH_BLUEPRINT.route("/user-data")
-@login_is_required
-def get_user_data():
-    """Return all the user data returned by Google
-    ---
-    responses:
-        200:
-            description: Return all the user data returned by Google
-            schema:
-                type: object
-                example:
-                            {
-                                "at_hash": "gy-uRqy-ckp1xtCVqalMyA",
-                                "aud": "5713982095317-p6vv1kttnbjr60u0rs7i8nmkurlft5mj.apps.googleusercontent.com",
-                                "azp": "5713982095317-p6vv1kttdgjr60u0rs7i8nmkurlft5mj.apps.googleusercontent.com",
-                                "email": "a.kebede@alustudent.com",
-                                "email_verified": true,
-                                "exp": 1681768052,
-                                "family_name": "Kebede",
-                                "given_name": "Abebe",
-                                "hd": "alustudent.com",
-                                "iat": 1681464452,
-                                "iss": "https://accounts.google.com",
-                                "locale": "en",
-                                "name": "Abebe Kebede",
-                                "picture": "https://lh3.googleusercontent.com/a/AGNmyxayr4UVXSZBNsx8xfeg1NCZxX24vJOASE4AF2gr=s96-c",
-                                "sub": "10505877750333961075"
-                                }
-                            
-    """
-    return jsonify(session["user_data"])
     
