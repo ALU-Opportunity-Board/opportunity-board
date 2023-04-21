@@ -2,6 +2,8 @@
 """
 from flask import Flask, jsonify
 from flask_cors import CORS
+from models.opportunity import Opportunity
+from models.user import User
 import config
 from models import db
 from flask_migrate import Migrate
@@ -29,13 +31,50 @@ migrate = Migrate(server, db)
 server.register_blueprint(AUTH_BLUEPRINT, url_prefix="/")
 
 # api status checker
-
-
 @server.route("/status")
 def status():
     """Returns the status of the API"""
     return jsonify({"status": "OK"})
 
+...
+
+# def create_user_opportunity():
+#     with server.app_context():
+#         # users = [
+#         #     {
+#         #         "first_name": "Chris",
+#         #         "last_name": "Christopher",
+#         #         "email": "c.christopher@alustudent.com",
+#         #         "role": "student",
+                
+                
+#         #     },
+            
+#         # ]
+#         # opportunities = [
+#         #     {
+#         #         "title": "UX/UI designer",
+#         #         "company": "Irembo",
+#         #         "opportunity_type": "Internship",
+#         #         "field": "computer software",
+#         #         "deadline": "2023-05-31",
+#         #         user: users[1][]
+#         #     }
+#         # ]
+        
+#         user1 = User(first_name="John", last_name="Doe", email="j.deo@alustudent.com", role="student")
+
+#         opportunity1 = Opportunity(title="Software Engineer", company="Google", opportunity_type="Internship", field="computer software", deadline="2023-05-31", link="https://www.google.com", user=user1)
+
+#         # add the post to the user's list of posts
+#         user1.shared_opportunities.append(opportunity1)
+
+#         # commit the changes to the database
+#         db.session.add(user1)
+#         db.session.add(opportunity1)
+#         db.session.commit()
+
+# create_user_opportunity()
 
 # add after request handler
 @server.after_request
