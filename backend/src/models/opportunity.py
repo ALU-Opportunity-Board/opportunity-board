@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from . import db
 # create user table
 class Opportunity(db.Model):
@@ -12,7 +12,7 @@ class Opportunity(db.Model):
     company = db.Column(db.String(100), nullable=False)
     opportunity_type = db.Column(db.String(100), nullable=False)
     field = db.Column(db.String(100), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
     deadline = db.Column(db.DateTime, nullable=False)
     link = db.Column(db.String(400), nullable=False)
