@@ -13,6 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(50), nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow())
     role = db.Column(db.String(50))
+    picture = db.Column(db.String(100))
     shared_opportunities = db.relationship('Opportunity', backref='user', lazy=True)
     
     def set_role(self, role):
