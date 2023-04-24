@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Icon() {
   return (
-    <span className="inline-block rounded-lg bg-gray-50 p-3">
+    <span className="inline-block rounded-full bg-white p-3">
       <svg
         className="h-6 w-6"
         fill="none"
