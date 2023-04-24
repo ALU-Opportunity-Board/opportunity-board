@@ -11,14 +11,15 @@ function Navbar() {
   const navigation = [
     { title: 'Home', path: '/home' },
     { title: 'Add Oppotunities', path: '/opportunity' },
-    { title: 'FaQ', path: '/support' },
+    { title: 'FaQS', path: '/support' },
     { title: 'Contact us', path: '/contactUs' },
   ];
   return (
     <div className="fixed backdrop-blur-sm bg-white/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 shadow-sm flex items-center justify-between">
       <div className="container max-w-7xl mx-auto w-full flex justify-between items-center ">
-        <img src="./src/assets/alu.png" alt="Logo" width={120} height={50} />
-
+        <a href="/home">
+          <img src="./src/assets/alu.png" alt="Logo" width={120} height={50} />
+        </a>
         <div
           className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
             state ? 'block' : 'hidden'
