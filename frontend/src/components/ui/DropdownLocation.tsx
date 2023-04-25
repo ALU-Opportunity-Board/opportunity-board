@@ -3,42 +3,30 @@ import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-const people = [
+const location = [
+  {
+    id: 0,
+    place: 'Remote',
+  },
   {
     id: 1,
-    name: 'Wade Cooper',
+    place: 'Kigali',
   },
   {
     id: 2,
-    name: 'Arlene:',
+    place: 'Nairobi',
+  },
+  {
+    id: 3,
+    place: 'Kampala',
   },
   {
     id: 4,
-    name: 'Tom Cook',
+    place: 'Addis Abeba',
   },
   {
     id: 5,
-    name: 'Tanya Fox',
-  },
-  {
-    id: 6,
-    name: 'Hellen Schmidt',
-  },
-  {
-    id: 7,
-    name: 'Caroline Schultz',
-  },
-  {
-    id: 8,
-    name: 'Mason Heaney',
-  },
-  {
-    id: 9,
-    name: 'Claudie Smitham',
-  },
-  {
-    id: 10,
-    name: 'Emil Schaefer',
+    place: 'Lagos',
   },
 ];
 
@@ -46,20 +34,20 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function DropdownFilter() {
-  const [selected, setSelected] = useState(people[3]);
+export default function DropdownLocation() {
+  const [selected, setSelected] = useState(location[3]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-            Filter by Field:
+            Filter by Location:
           </Listbox.Label>
           <div className="relative mt-2">
             <Listbox.Button className="relative w-full cursor-pointer rounded-md bg-white m-auto py-1.5 pl-3 pr-28 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
-                <span className="ml-3 block truncate">{selected.name}</span>
+                <span className="ml-3 block truncate">{selected.place}</span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <ChevronUpDownIcon
@@ -77,16 +65,16 @@ export default function DropdownFilter() {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {people.map((person) => (
+                {location.map((city) => (
                   <Listbox.Option
-                    key={person.id}
+                    key={city.id}
                     className={({ active }) =>
                       classNames(
                         active ? 'bg-indigo-600 text-white' : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9'
+                        'relative cursor-pointer select-none py-2 pl-3 pr-9'
                       )
                     }
-                    value={person}
+                    value={city}
                   >
                     {({ selected, active }) => (
                       <>
@@ -97,7 +85,7 @@ export default function DropdownFilter() {
                               'ml-3 block truncate'
                             )}
                           >
-                            {person.name}
+                            {city.place}
                           </span>
                         </div>
 
