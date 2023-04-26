@@ -256,5 +256,5 @@ def logout():
 @login_is_required
 def user_data():
     """ return the user out of the session"""
-    return jsonify(session["user_data"])
+    return jsonify(session["user"])
 
