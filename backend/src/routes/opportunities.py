@@ -21,7 +21,6 @@ def get_all_opportunities():
     return jsonify(all_opportunities), 200
 
 
-
 @OPPORTUNITY_BLUEPRINT.route("/opportunities/<int:opportunity_id>", strict_slashes=False)
 @login_required
 def get_opportunity(opportunity_id):
