@@ -25,7 +25,7 @@ server.secret_key = config.SECRET_KEY
 db.init_app(server)
 db.app = server
 
-migrate = Migrate(server, db)
+# migrate = Migrate(server, db)
 
 # app.config['PERMANENT_SESSION_LIFETIME'] = 20000
 
