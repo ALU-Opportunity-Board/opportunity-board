@@ -61,3 +61,25 @@ def add_opportunity():
     current_user.shared_opportunities.append(opportunity)
     db.session.commit()
     return jsonify(opportunity.to_dict()), 201
+
+
+
+@OPPORTUNITY_BLUEPRINT.route("/opportunity/liked", strict_slashes=False, methods=["PATCH"])
+@login_required
+def change_like_status_of_opportunity():
+    """ Change the status of the opportunity to liked
+    """
+    data = request.get_json()
+    if 'id' not in data:
+        return {"error": "Missing id"}, 400
+    if 'liked' in data and isinstance(data['liked'], bool):
+        opportunity = db.session.query(Opportunity).filter(Opportunity.id == data['id']).first()
+        if opportunity is None:
+            return abort(404)
+        opportunity.liked = data.get('liked')
+        if data.get('liked'):
+            opportunity.likes += 1
+        elif data.get('liked') is False:
+            opportunity.likes -= 1
+        db.session.commit()
+    return jsonify({"liked": data.get('liked')}), 201
