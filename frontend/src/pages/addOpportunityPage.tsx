@@ -6,7 +6,7 @@ import { Button } from '../components/ui/Button';
 
 export default function AddOpportunityPage() {
   return (
-    <div className="bg-slate-50">
+    <div className="bg-gray-50">
       <Navbar />
       <div className="mx-auto max-w-screen-xl px-4 py-28 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg text-center">
@@ -114,71 +114,7 @@ export default function AddOpportunityPage() {
               />
             </div>
           </div>
-          <div className="relative">
-            <button
-              type="button"
-              className="inline-flex justify-center items-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              id="options-menu"
-              aria-expanded="true"
-              aria-haspopup="true"
-            >
-              Filters
-              <svg
-                className="-mr-1 ml-2 h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l2.293-2.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
 
-            <div
-              className="origin-top-right absolute right-0 mt-2 w-80 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              <div className="py-1" role="none">
-                <h3 className="text-sm font-semibold text-gray-700 pl-4 pt-2 pb-1">
-                  Category
-                </h3>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  All
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  Graphic Design
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  Web Design
-                </a>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  Illustration
-                </a>
-              </div>
-            </div>
-          </div>
           <Button>Submit</Button>
         </form>
       </div>
