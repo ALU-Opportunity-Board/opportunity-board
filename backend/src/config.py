@@ -21,6 +21,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 HOST = os.getenv("APPLICATION_HOST")
 PORT = int(os.getenv("APPLICATION_PORT"))
 
+BACKEND_URL=os.getenv("BACKEND_URL")
+FRONTEND_URL=os.getenv("FRONTEND_URL")
+ALGORITHM = os.getenv("ALGORITHM")
+
 # #  google configs
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
 APP_SECRET = os.getenv('SECRET_KEY')

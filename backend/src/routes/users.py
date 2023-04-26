@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Routes related to user data."""
 import uuid
-from routes import login_is_required
+from routes import login_required
 
 from flask import jsonify, session, abort, redirect, request, Blueprint, url_for
 from models import User, Opportunity
@@ -11,7 +11,7 @@ USER_BLUEPRINT = Blueprint("user", __name__)
 
 
 @USER_BLUEPRINT.route("/user", strict_slashes=False)
-@login_is_required
+@login_required
 def get_user():
     """Get the user data from the database.
     """
@@ -36,7 +36,7 @@ def get_user_opportunities(user_id):
 
 
 @USER_BLUEPRINT.route('/users/<user_id>/opportunity', methods=['POST'])
-# @login_is_required
+# @login_required
 def create_user_post(user_id):
     data = request.get_json()
     user = User.query.get_or_404(user_id)
@@ -54,7 +54,7 @@ def create_user_post(user_id):
 
 
 # @USER_BLUEPRINT.route("/user/opportunities", strict_slashes=False)
-# @login_is_required
+# @login_required
 # def get_user():
 #     """Get the user data from the database.
 #     """
@@ -72,7 +72,7 @@ def create_user_post(user_id):
     
 
 @USER_BLUEPRINT.route("/user-data")
-@login_is_required
+@login_required
 def get_user_data():
     """Return all the user data returned by Google
     ---
