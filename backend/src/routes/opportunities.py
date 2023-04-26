@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Routes related to user data."""
-from routes import login_is_required
+from routes import login_required
 from models import db,  Opportunity
 from flask import jsonify, session, abort, redirect, request, Blueprint, url_for
 OPPORTUNITY_BLUEPRINT = Blueprint("opportunity", __name__)
 
 
 @OPPORTUNITY_BLUEPRINT.route("/opportunities", strict_slashes=False)
-# @login_is_required
+# @login_required
 def get_all_opportunities():
     """Get all the opportunities from the database.
     """
@@ -31,7 +31,7 @@ def get_opportunity(opportunity_id):
 
 
 # @OPPORTUNITY_BLUEPRINT.route("/opportunities/<opportunity_id>", strict_slashes=False, methods=["DELETE"])
-# # @login_is_required
+# # @login_required
 # def get_opportunity(opportunity_id):
 #     """Get a specific opportunity from the database.
 #     """
