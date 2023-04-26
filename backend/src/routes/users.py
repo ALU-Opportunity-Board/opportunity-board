@@ -13,14 +13,26 @@ USER_BLUEPRINT = Blueprint("user", __name__)
 @USER_BLUEPRINT.route("/user", strict_slashes=False)
 @login_required
 def get_user():
-    """Get the user data from the database.
+    """Get the current user data from database.
     """
-    return "user opportunities"
+    # get the current user data from jwt
+    current_user_email = session.get("current_user_email")
+    current_user = db.session.query(User).filter(User.email == current_user_email).first()
+    
+    # get all the opportunities shared by the current user
+    # and add them to the dict value
+    opportunities = current_user.shared_opportunities
+    current_user = current_user.to_dict()
+    opportunities = [opportunity.to_dict() for opportunity in opportunities]
+    print(current_user)
+    current_user["shared_opportunities"] = opportunities
+    return jsonify({"user": current_user})
 
 
-@USER_BLUEPRINT.route('/users/<user_id>/opportunities', methods=['GET'])
-def get_user_opportunities(user_id):
-    """Get all opportunities for posted by a user
+@USER_BLUEPRINT.route('/user/opportunities', methods=['GET'])
+@login_required
+def get_user_opportunities():
+    """Get all opportunities posted by the current user
 
     Args:
         user_id (_type_): _description_
@@ -28,29 +40,10 @@ def get_user_opportunities(user_id):
     Returns:
         _type_: _description_
     """
-    user = User.query.get_or_404(user_id)
-    opportunities = user.shared_opportunities
-    # print("====OPPORTUNITIES=======", opportunities)
+    current_user_email = session.get("current_user_email")
+    current_user = db.session.query(User).filter(User.email == current_user_email).first()
+    opportunities = current_user.shared_opportunities
     return jsonify([opportunity.to_dict() for opportunity in opportunities])
-
-
-
-@USER_BLUEPRINT.route('/users/<user_id>/opportunity', methods=['POST'])
-# @login_required
-def create_user_post(user_id):
-    data = request.get_json()
-    user = User.query.get_or_404(user_id)
-    
-    print("====DATA====", data)
-    # return jsonify(data), 201
-    id = str(uuid.uuid4())
-    opportunity = Opportunity(id=id,title=data['title'], user_id=user_id, company=data['company'], opportunity_type=data['opportunity_type'], field=data['field'], deadline=data['deadline'], link=data['link'])
-   
-    
-    db.session.add(opportunity)
-    user.shared_opportunities.append(opportunity)
-    db.session.commit()
-    return jsonify(opportunity.to_dict()), 201
 
 
 # @USER_BLUEPRINT.route("/user/opportunities", strict_slashes=False)
