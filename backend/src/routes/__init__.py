@@ -1,5 +1,6 @@
-from flask import abort, request, jsonify
-
+from flask import abort, request, jsonify, session
+import jwt
+from config import APP_SECRET, ALGORITHM
 def login_required(function):
     def wrapper(*args, **kwargs):
         auth_token = request.headers.get("Authorization")
@@ -9,6 +10,11 @@ def login_required(function):
         if encoded_jwt is None:
             return abort(401)
         else:
+            # add the current user email to session
+            if 'current_user_email' not in session:
+                # get email from jwt token
+                decoded_jwt = jwt.decode(encoded_jwt, APP_SECRET, algorithms=[ALGORITHM,])
+                session['current_user_email'] = decoded_jwt.get('email')
             return function()
     wrapper.__name__ = function.__name__
     return wrapper
