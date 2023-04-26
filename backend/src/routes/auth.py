@@ -11,6 +11,7 @@ import os, pathlib
 import google
 import config
 from routes.register_user import register_user
+from routes import login_required
 
 import jwt
 
@@ -47,17 +48,17 @@ flow = Flow.from_client_secrets_file(
 
 
 # wrapper
-def login_required(function):
-    def wrapper(*args, **kwargs):
-        auth_token = request.headers.get("Authorization")
-        if auth_token is None:
-            return jsonify({"error": "Token not found"}), 401
-        encoded_jwt = auth_token.split("Bearer ")[1]
-        if encoded_jwt is None:
-            return abort(401)
-        else:
-            return function()
-    return wrapper
+# def login_required(function):
+#     def wrapper(*args, **kwargs):
+#         auth_token = request.headers.get("Authorization")
+#         if auth_token is None:
+#             return jsonify({"error": "Token not found"}), 401
+#         encoded_jwt = auth_token.split("Bearer ")[1]
+#         if encoded_jwt is None:
+#             return abort(401)
+#         else:
+#             return function()
+#     return wrapper
 
 
 def generate_jwt(payload):
@@ -99,24 +100,15 @@ def login():
     authorization_url, state = flow.authorization_url()
     # Store the state so the callback can verify the auth server response.
     session["state"] = state
-    #TODO: uncomment the following line
-    # return jsonify({'auth_url':authorization_url}), 200
-    return Response(
-        response=json.dumps({'auth_url':authorization_url}),
-        status=200,
-        mimetype='application/json'
-    )
+    return jsonify({'auth_url':authorization_url}), 200
 
 
 @AUTH_BLUEPRINT.route("/logout")
 def logout():
     #clear the local storage from frontend
     session.clear()
-    return Response(
-        response=json.dumps({"message":"Logged out"}),
-        status=202,
-        mimetype='application/json'
-    )
+    return jsonify({"message":"Logged out"}), 202
+    
 
 
 @AUTH_BLUEPRINT.route("/home")
