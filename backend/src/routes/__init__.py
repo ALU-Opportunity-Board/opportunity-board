@@ -15,7 +15,7 @@ def login_required(function):
                 # get email from jwt token
                 decoded_jwt = jwt.decode(encoded_jwt, APP_SECRET, algorithms=[ALGORITHM,])
                 session['current_user_email'] = decoded_jwt.get('email')
-            return function()
+            return function(*args, **kwargs)
     wrapper.__name__ = function.__name__
     return wrapper
 
