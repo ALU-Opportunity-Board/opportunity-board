@@ -3,8 +3,8 @@
 import uuid
 from routes import login_required
 
-from flask import jsonify, session, abort, redirect, request, Blueprint, url_for
-from models import User, Opportunity
+from flask import jsonify, session, Blueprint
+from models import User
 from db import db_operations
 from models import db
 USER_BLUEPRINT = Blueprint("user", __name__)
@@ -44,25 +44,7 @@ def get_user_opportunities():
     current_user = db.session.query(User).filter(User.email == current_user_email).first()
     opportunities = current_user.shared_opportunities
     return jsonify([opportunity.to_dict() for opportunity in opportunities])
-
-
-# @USER_BLUEPRINT.route("/user/opportunities", strict_slashes=False)
-# @login_required
-# def get_user():
-#     """Get the user data from the database.
-#     """
-#     if not request.is_json:
-#         abort(400, description="Not a JSON")
-#     data = request.get_json()
-#     if 'email' not in data:
-#         abort(400, description="Missing name")
-#     state = State(**data)
-#     state.save()
-#     return jsonify(state.to_dict()), 201
-
  
-    
-    
 
 @USER_BLUEPRINT.route("/user-data")
 @login_required

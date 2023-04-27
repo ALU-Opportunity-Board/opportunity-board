@@ -51,6 +51,7 @@ pip install -r requirements.txt
 9. Rename client_secretXXXXXX.json to client_secret.json
 10. move to project root directory
 
+
 ## Datebase setup
 
 - This section will be updated soon
@@ -67,3 +68,7 @@ The application will run at the specified port `APPLICATION_PORT` in `.env` file
 To test if the application is running, visit `http://localhost:5000/status` or `http://127.0.0.1:5000/status` in your browser. You should see a message saying `{"status": "OK"}`
 
 The API Swagger documentation should be accessible at `http://localhost:5000/apidocs`
+
+# API Reference
+
+The API documentation is available at [API.md](./API.md)

@@ -16,6 +16,7 @@ Here are the endpoints to login using Google
 {
     "auth_url": "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=571582085310-p6vv1kttnbjr60u0rs401maurltt5mj.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Fcallback&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&state=BaPKN9HSgxHTXFWsRdrA9Etr1XLemn&access_type=offline"
 }
+```
 
 
 ## Authenticated User Endpoints

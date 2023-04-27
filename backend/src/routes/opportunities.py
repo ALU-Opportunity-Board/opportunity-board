@@ -4,7 +4,8 @@ import uuid
 from models.user import User
 from routes import login_required
 from models import db,  Opportunity
-from flask import jsonify, session, abort, redirect, request, Blueprint
+from flask import jsonify, session, abort, request, Blueprint
+from db import db_operations
 OPPORTUNITY_BLUEPRINT = Blueprint("opportunity", __name__)
 
 
@@ -72,14 +73,20 @@ def change_like_status_of_opportunity():
     data = request.get_json()
     if 'id' not in data:
         return {"error": "Missing id"}, 400
+    print(type(data['liked']))
+    print(data['liked'])
     if 'liked' in data and isinstance(data['liked'], bool):
         opportunity = db.session.query(Opportunity).filter(Opportunity.id == data['id']).first()
         if opportunity is None:
             return abort(404)
-        opportunity.liked = data.get('liked')
-        if data.get('liked'):
-            opportunity.likes += 1
-        elif data.get('liked') is False:
-            opportunity.likes -= 1
-        db.session.commit()
+        if opportunity.liked != data.get('liked'):
+            opportunity.liked = data.get('liked')
+            if data.get('liked'):
+                opportunity.likes += 1
+            elif data.get('liked') is False:
+                opportunity.likes -= 1
+        
+        db_operations.save()
+        
+        
     return jsonify({"liked": data.get('liked')}), 201
