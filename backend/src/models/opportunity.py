@@ -17,7 +17,8 @@ class Opportunity(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow())
     deadline = db.Column(db.DateTime, nullable=False)
     link = db.Column(db.String(400), nullable=False)
-    
+    liked = db.Column(db.Boolean, default=False)
+    likes = db.Column(db.Integer, default=0)
     
     def to_dict(self):
         return {
@@ -30,5 +31,7 @@ class Opportunity(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at,
             "deadline": self.deadline,
-            "link": self.link
+            "link": self.link,
+            "liked": self.liked,
+            "likes": self.likes,
         }

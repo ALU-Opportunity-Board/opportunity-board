@@ -95,7 +95,7 @@ def callback():
     )
 
 
-@AUTH_BLUEPRINT.route("/auth/google")
+@AUTH_BLUEPRINT.route("/google/login")
 def login():
     authorization_url, state = flow.authorization_url()
     # Store the state so the callback can verify the auth server response.

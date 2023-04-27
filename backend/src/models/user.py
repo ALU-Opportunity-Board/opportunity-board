@@ -18,3 +18,15 @@ class User(db.Model):
     
     def set_role(self, role):
         self.role = role
+        
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "created_at": self.created_at,
+            "role": self.role,
+            "picture": self.picture,
+            "shared_opportunities": self.shared_opportunities,
+        }
