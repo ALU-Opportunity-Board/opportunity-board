@@ -23,8 +23,18 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fetchUser = async () => {
+    const authToken = document.cookie
+      .split('; ')
+      .find((cookie) => cookie.startsWith('authToken='))
+      ?.split('=')[1];
+    console.log(authToken);
     const currentUser = await axios
-      .get('http://127.0.0.1:5000/user-data', { withCredentials: true })
+      .get('http://127.0.0.1:5000/user-data', {
+        headers: {
+          'Access-Control-Allow-Origin': '* ',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      })
       .catch((err) => {
         console.log('Not properly authenticated');
         navigate('/not_found');

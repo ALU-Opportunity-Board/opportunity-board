@@ -3,6 +3,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { Button } from '../components/ui/Button';
+import DropdownType from '../components/ui/DropdownType';
 
 export default function AddOpportunityPage() {
   return (
@@ -26,20 +27,7 @@ export default function AddOpportunityPage() {
         </div>
 
         <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-
-            <div className="relative">
-              Opportunity Type *
-              <input
-                type="email"
-                className="w-full inset-0 border-2 border-dashed border-black  p-4 pe-12 text-sm shadow-sm"
-                placeholder="Please"
-              />
-            </div>
-          </div>
+          <DropdownType />
 
           <div>
             <label htmlFor="email" className="sr-only">
