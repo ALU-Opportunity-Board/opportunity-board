@@ -87,12 +87,12 @@ def callback():
     register_user(id_info)
     
     
-    # return redirect(f"{FRONTEND_URL}?jwt={jwt_token}")
-    return Response(
-        response=json.dumps({'JWT':jwt_token}),
-        status=200,
-        mimetype='application/json'
-    )
+    return redirect(f"{FRONTEND_URL}?jwt={jwt_token}")
+    # return Response(
+    #     response=json.dumps({'JWT':jwt_token}),
+    #     status=200,
+    #     mimetype='application/json'
+    # )
 
 
 @AUTH_BLUEPRINT.route("/google/login")
