@@ -15,8 +15,8 @@ DB_PORT = os.getenv("DB_PORT", 5432)
 
 DB_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-if DB_HOST != 'localhost':
-    DB_URI = os.getenv("DATABASE_URL")
+# if DB_HOST != 'localhost':
+# DB_URI = os.getenv("DATABASE_URL")
     
 # # Application configs
 SECRET_KEY = os.getenv("SECRET_KEY")
