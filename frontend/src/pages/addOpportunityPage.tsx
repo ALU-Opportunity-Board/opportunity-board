@@ -43,6 +43,7 @@ export default function AddOpportunityPage() {
       opportunity_type: type.place,
       title: title,
     };
+    
     try {
       const response = await axios.post(
         'http://127.0.0.1:5000/opportunity',
@@ -61,6 +62,9 @@ export default function AddOpportunityPage() {
       setLink('');
       setType(types[3]);
       setTitle('');
+
+      window.alert('Opportunity Added successfully! Thank you for sharing!');
+
       // dispatch(addOpportunities(response.data));
     } catch (error) {
       console.log(error);
@@ -94,7 +98,7 @@ export default function AddOpportunityPage() {
         >
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
-              Entrer Company:
+              Company/Organization Name:
             </label>
             <div className="relative">
               <input
@@ -108,7 +112,7 @@ export default function AddOpportunityPage() {
 
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
-              Select Deadline:
+              Deadline:
             </label>
             <div className="relative">
               <input
@@ -302,7 +306,7 @@ export default function AddOpportunityPage() {
             </div>
           </div>
 
-          <Button>Submit</Button>
+          <Button>Add Opportunity</Button>
         </form>
       </div>
     </div>
