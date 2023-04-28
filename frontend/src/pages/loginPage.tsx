@@ -18,45 +18,15 @@ import LargeHeading from '../components/ui/LargeHeading';
 import Paragraph from '../components/ui/Paragraph';
 import { setAuthUser, setIsAuthenticated } from '../reducers/authReducer';
 
-export default function LoginPage() {
+export default function LoginPage(props: any) {
   // const user = useSelector((state: any) => state.App.authUser as any) as any;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const fetchUser = async () => {
-    const currentUser = await axios
-      .get('http://127.0.0.1:5000/user-data', { withCredentials: true })
-      .catch((err) => {
-        console.log('Not properly authenticated');
-        navigate('/not_found');
-      });
-    console.log(currentUser);
-    if (currentUser && currentUser.data) {
-      navigate('/home');
-      console.log('user', currentUser.data);
-      dispatch(setIsAuthenticated(true));
-      dispatch(setAuthUser(currentUser.data));
+  useEffect(() => {
+    if (localStorage.getItem('JWT') !== null) {
+      return navigate('/home');
     }
-  };
-  const handleAuth = async () => {
-    let timer: NodeJS.Timeout | null = null;
-    const googleUrl = 'http://127.0.0.1:5000/login';
-    const newWindow = window.open(googleUrl, '_blank', 'width=500, height=600');
-    if (newWindow) {
-      console.log('test1');
-      timer = setInterval(() => {
-        console.log('test2');
-        if (newWindow.closed) {
-          console.log("Yay we're authenticated");
-          fetchUser();
-          if (timer) clearInterval(timer);
-        }
-      }, 50);
-    }
-  };
-
-  // useEffect(() => {
-  //   fetchUser();
-  // }, []);
+  }, []);
 
   return (
     <body
@@ -89,7 +59,7 @@ export default function LoginPage() {
           </div>
           <button
             className="text-white hover:text-black w-full flex items-center justify-center -gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
-            onClick={handleAuth}
+            onClick={(e) => props.login(e)}
           >
             <FcGoogle className="text-2xl mr-4" /> Continue with Google
           </button>

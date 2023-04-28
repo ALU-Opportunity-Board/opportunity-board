@@ -3,11 +3,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-script-url */
-import React, { useState } from 'react';
-import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+import React, { useEffect, useState } from 'react';
+import { FcLike, FcLikePlaceholder, FcCalendar } from 'react-icons/fc';
 import Filter from './Filter';
 import Icon from './ui/icon';
 import members from '../models/opportunities';
+import axios from 'axios';
 
 export default function Opportunitycard() {
   const [pages, setPages] = useState(['1', '2', '3', , '...', '8', '9', '10']);
@@ -20,6 +21,22 @@ export default function Opportunitycard() {
     );
     setState(updatedItems);
   };
+
+  useEffect(() => {
+    const fetchOpportunities = async () => {
+      await axios
+        .get('http://localhost:5000/opportunities', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('JWT')}`,
+          },
+        })
+        .then((res) => {
+          setState(res.data);
+        })
+        .catch((error) => console.log(error));
+    };
+    fetchOpportunities();
+  }, []);
 
   return (
     <section className="py-0">
@@ -55,11 +72,11 @@ export default function Opportunitycard() {
                     <Icon />
                   </div>
                   <div>
-                    <span className="block text-sm text-red-600 font-medium">
-                      {item.companyName}
+                    <span className="block text-2xl text-black-600 font-medium">
+                      {item.title}
                     </span>
-                    <h3 className="text-base text-gray-800 font-semibold mt-1">
-                      {item.jobTitle}
+                    <h3 className="text-base text-red-600 font-semibold mt-1">
+                      {item.company}
                     </h3>
                   </div>
                 </div>
@@ -85,24 +102,12 @@ export default function Opportunitycard() {
                         fill="#9CA3AF"
                       />
                     </svg>
-                    {item.jobType}
+                    {item.opportunity_type}
                   </span>
                   <span className="flex items-center gap-2">
-                    <svg
-                      className="w-5 h-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M5.05025 4.05025C7.78392 1.31658 12.2161 1.31658 14.9497 4.05025C17.6834 6.78392 17.6834 11.2161 14.9497 13.9497L10 18.8995L5.05025 13.9497C2.31658 11.2161 2.31658 6.78392 5.05025 4.05025ZM10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z"
-                        fill="#9CA3AF"
-                      />
-                    </svg>
+                    <FcCalendar />
 
-                    {item.location}
+                    {item.deadline}
                   </span>
                 </div>
 
