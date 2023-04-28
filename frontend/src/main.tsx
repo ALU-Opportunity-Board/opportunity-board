@@ -8,17 +8,22 @@ import './index.css';
 import { configureStore } from '@reduxjs/toolkit';
 
 import AppSlice from './reducers/authReducer';
+import oppSlice from './reducers/oppReducer';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore({
   reducer: {
     auth: AppSlice,
+    listOpportunities: oppSlice,
   },
 });
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
