@@ -1,7 +1,7 @@
 interface Opportunities {
   companyName: string;
   jobTitle: string;
-  jobType: string;
+  opportunity_type: string;
   location: string;
   link: URL;
 }
@@ -9,66 +9,73 @@ interface Opportunities {
 const members = [
   {
     id: '0',
-    companyName: 'Irembo',
-    jobTitle: 'Backend engineer',
-    jobType: 'Internship',
+    company: 'Irembo',
+    title: 'Backend engineer',
+    opportunity_type: 'Internship',
     location: 'Remotely',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '1',
-    companyName: 'Safaricom',
-    jobTitle: 'Project Manager',
-    jobType: 'Full-time',
+    company: 'Safaricom',
+    title: 'Project Manager',
+    opportunity_type: 'Full-time',
     location: 'Nairobi',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '2',
-    companyName: 'Major League Hacking',
-    jobTitle: '',
-    jobType: 'Fellowship',
+    company: 'Major League Hacking',
+    title: '',
+    opportunity_type: 'Fellowship',
     location: 'Remotely',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '3',
-    companyName: 'Irembo',
-    jobTitle: 'Full stack engineer',
+    company: 'Irembo',
+    title: 'Full stack engineer',
     jobType: 'Full-time',
     location: 'Remotely',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '4',
-    companyName: 'Irembo',
-    jobTitle: 'Full stack engineer',
+    company: 'Irembo',
+    title: 'Full stack engineer',
     jobType: 'Full-time',
     location: 'Kampala',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '5',
-    companyName: 'Paystack',
-    jobTitle: 'Finance',
+    company: 'Paystack',
+    title: 'Finance',
     jobType: 'Internship',
     location: 'Lagos',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
   {
     id: '6',
-    companyName: 'Safaricom',
-    jobTitle: 'Full stack engineer',
-    jobType: 'Full-time',
+    company: 'Safaricom',
+    title: 'Full stack engineer',
+    opportunity_type: 'Full-time',
     location: 'Addis-abeba',
     currentState: false,
     link: 'javascript:void(0)',
+    deadline: '',
   },
 ];
 
