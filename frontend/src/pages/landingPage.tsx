@@ -1,10 +1,31 @@
 /* eslint-disable no-script-url */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Filter from '../components/Filter';
 import Opportunitycard from '../components/Opportunitycard';
 import Navbar from '../components/Navbar';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
+  const [auth, setAuth] = useState(null);
+  const nav = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem('JWT') == null) {
+      return nav('/');
+    } else {
+      axios
+        .get('http://127.0.0.1:5000/opportunities', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('JWT')}`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setAuth(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
   return (
     <div className="container-fluid bg-gray-50">
       <Navbar />
