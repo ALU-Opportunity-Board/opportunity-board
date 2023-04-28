@@ -17,9 +17,13 @@ def get_all_opportunities():
     print(db.session.query(Opportunity).all())
     all_opportunities = []
     for opportunity in db.session.query(Opportunity).all():
-        all_opportunities.append(opportunity.to_dict())
+        all_opportunities.append(opportunity)
+        
+    # sort all_opportunities by deadline (from most recent to least recent)
+    all_opportunities.sort(key=lambda x: x.deadline, reverse=True)
     print(all_opportunities)
-    return jsonify(all_opportunities), 200
+    opportunities_dict = [opportunity.to_dict() for opportunity in all_opportunities]
+    return jsonify(opportunities_dict), 200
 
 
 @OPPORTUNITY_BLUEPRINT.route("/opportunity/<opportunity_id>", strict_slashes=False, methods=["DELETE"])
