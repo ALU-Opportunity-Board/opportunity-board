@@ -5,6 +5,7 @@
 /* eslint-disable react/jsx-no-script-url */
 import React, { useEffect, useState } from 'react';
 import { FcLike, FcLikePlaceholder, FcCalendar } from 'react-icons/fc';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
 import Filter from './Filter';
 import Icon from './ui/icon';
 import members from '../models/opportunities';
@@ -38,6 +39,12 @@ export default function Opportunitycard() {
     fetchOpportunities();
   }, []);
 
+  function dateFormatConverter(date: string) {
+    console.log(date);
+    const dateArray = date.split(' ');
+    return `${dateArray[0]} ${dateArray[1]} ${dateArray[2]} ${dateArray[3]}`;
+  }
+
   return (
     <section className="py-0">
       <div>
@@ -66,7 +73,7 @@ export default function Opportunitycard() {
               key={idx}
               className="px-4 py-5 duration-150 hover:border-white hover:rounded-xl hover:bg-white"
             >
-              <a href={item.link} className="space-y-3">
+              <a className="space-y-3">
                 <div className="flex items-center gap-x-3">
                   <div className="bg-white w-14 h-14 border rounded-full flex items-center justify-center">
                     <Icon />
@@ -75,7 +82,7 @@ export default function Opportunitycard() {
                     <span className="block text-2xl text-black-600 font-medium">
                       {item.title}
                     </span>
-                    <h3 className="text-base text-red-600 font-semibold mt-1">
+                    <h3 className="text-base text-blue-900 font-semibold mt-1">
                       {item.company}
                     </h3>
                   </div>
@@ -105,9 +112,18 @@ export default function Opportunitycard() {
                     {item.opportunity_type}
                   </span>
                   <span className="flex items-center gap-2">
-                    <FcCalendar />
-
-                    {item.deadline}
+                    <h1>Deadline: </h1>
+                    <span className="text-red-600 font-bold">
+                      {dateFormatConverter(item.deadline)}
+                    </span>
+                  </span>
+                  <span className="flex items-center gap-2 hover:text-blue-600 font-bold">
+                    <a href={item.link} target="_blank">
+                      <span className='flex items-center gap-2'>
+                        Apply
+                        <BsBoxArrowUpRight />
+                      </span>
+                    </a>
                   </span>
                 </div>
 
