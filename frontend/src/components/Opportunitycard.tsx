@@ -10,11 +10,18 @@ import Filter from './Filter';
 import Icon from './ui/icon';
 import members from '../models/opportunities';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { addOpportunities, setOpportunities } from '../reducers/oppReducer';
+import { json } from 'react-router-dom';
 
 export default function Opportunitycard() {
   const [pages, setPages] = useState(['1', '2', '3', , '...', '8', '9', '10']);
   const [currentPage, setCurrentPage] = useState('1');
   const [state, setState] = useState(members);
+  const dispatch = useDispatch();
+  const opportunityList = useSelector(
+    (state: any) => state.Opp && state.Opp.value
+  );
 
   const toggleLike = (id: any) => {
     const updatedItems = state.map((item) =>
@@ -25,16 +32,22 @@ export default function Opportunitycard() {
 
   useEffect(() => {
     const fetchOpportunities = async () => {
-      await axios
+      const res = await axios
         .get('http://localhost:5000/opportunities', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('JWT')}`,
           },
         })
-        .then((res) => {
-          setState(res.data);
-        })
         .catch((error) => console.log(error));
+      if (res && res.data) {
+        const json = await res.data;
+
+        console.log('data' + res.data);
+
+        setState(json);
+        dispatch(setOpportunities(json));
+        console.log(opportunityList);
+      }
     };
     fetchOpportunities();
   }, []);
@@ -68,7 +81,7 @@ export default function Opportunitycard() {
       </div>
       <div className="max-w-screen-lg mx-auto px-4 md:px-8">
         <ul className="mt-12 divide-y space-y-3">
-          {state.map((item, idx) => (
+          {opportunityList.map((item: any, idx: any) => (
             <li
               key={idx}
               className="px-4 py-5 duration-150 hover:border-white hover:rounded-xl hover:bg-white"

@@ -13,8 +13,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore({
   reducer: {
-    auth: AppSlice,
-    listOpportunities: oppSlice,
+    App: AppSlice,
+    Opp: oppSlice,
   },
 });
 
