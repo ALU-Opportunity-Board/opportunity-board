@@ -1,17 +1,21 @@
-# OPPORTUNITYBOARD - help you find your next intership
+# OPPORTUNITYBOARD
 
-![OPPORTUNITYBOARD help you find your next internship]
-
-A web app where you can find contributors for your open-source project or as an individual contributor you can find open-source projects. Best place to start open-source contribution.
-Find people who have the same vision as you do and contribute for building amazing products.
+We're working on a redesign of the current opportunity board website exclusively available to students at African Leadership University. The existing platform, which is built with canvas, has received complaints from numerous students and alumni. Our aim with this new website is to enhance the user experience and make opportunities more accessible to the community.
 
 ## Demo
 
-Check out the web app: [https://opportunityboard.net](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+Check out the video presentation: [opportunityboard](https://youtu.be/g24DxZdY030)
+
+## Screenshots
+
+![Screenshot 2023-05-05 163803](https://user-images.githubusercontent.com/82499435/236474432-19220dc4-3c73-4ce4-969c-ed2bc9557833.png)
+
+![Screenshot 2023-05-05 164148](https://user-images.githubusercontent.com/82499435/236474389-71c4d10b-3920-45ac-b94d-e4764db1730b.png)
+
 
 ## Connect with us
 
-As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Join our Discord server by clicking the badge below.
+As a community, we always encourage people to share their thoughts and ideas. Do you want to talk about this project or intersted contributing feel to do so.
 
 [![FIGMA - View](https://img.shields.io/badge/Figma-View-2ea44f?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/proto/jwqIT3fE5PPi8UkibeKuZf/final-ALU-opportunity-board?node-id=6-820&starting-point-node-id=40%3A936-board)
 
@@ -64,18 +68,15 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 ## Contributing Guidelines
 
-Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](https://github.com/ALU-Opportunity-Board
-/opportunity-board/blob/main/CONTRIBUTING.md) file for more information.
+Any contributions you make are truly appreciated, go to our [CONTRIBUTING.md](https://github.com/ALU-Opportunity-Board/opportunity-board/blob/develop/CONTRIBUTING.md) file for more information.
 
 ## Code of Conduct
 
-View [CODE_OF_CONDUCT.md](https://github.com/ALU-Opportunity-Board
-/opportunity-board/blob/main/CODE_OF_CONDUCT.md)
+View [CODE_OF_CONDUCT.md](https://github.com/ALU-Opportunity-Board/opportunity-board/blob/develop/CODE_OF_CONDUCT.md)
 
 ## License
 
-opportunity-board is licensed under the MIT License - see the [LICENSE](https://github.com/ALU-Opportunity-Board
-/opportunity-board/blob/main/LICENSE) file for details.
+opportunity-board is licensed under the MIT License - see the [LICENSE](https://github.com/ALU-Opportunity-Board/opportunity-board/blob/main/LICENSE) file for details.
 
 ## Thanks to all Contributors
 
