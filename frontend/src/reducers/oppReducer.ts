@@ -2,14 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface oppState {
   value: any | null;
+  filter: any | null;
 }
 
 const initialState: oppState = {
   value: [],
+  filter: '',
 };
 
 const oppSlice = createSlice({
-  name: 'App',
+  name: 'Opp',
   initialState,
   reducers: {
     setOpportunities: (state, action) => {
