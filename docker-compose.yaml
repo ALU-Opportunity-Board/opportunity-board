@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 51073:5173
+    volumes:
+      - ./frontend:/usr/src/app
+    depends_on:
+      - server
+
+  server:
+    build: ./backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/usr/src/app
+    environment:
+      - DB_NAME='opportunity_board'
+      - TEST_DB_NAME='opportunity_board_test'
+      - DB_USER='postgres'
+      - DB_PASSWORD='database_password'
+      - DB_PORT=5432
+      - DB_HOST='localhost'
+    depends_on:
+      - database
+
+      
+  database:
+    image: 'postgres:latest'
+    ports:
+      - 15432:5432
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 15433:80
+    env_file:
+      - .env
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+    volumes:
+      - ./pgadmin-data/:/var/lib/pgadmin/
+
+networks: 
+  postgres-network:
+    driver: bridge
