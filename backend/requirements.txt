@@ -1,0 +1,15 @@
+alembic==1.10.3
+flasgger==0.9.5
+Flask==2.2.3
+Flask_Cors==3.0.10
+Flask_Migrate==4.0.4
+flask_sqlalchemy==3.0.3
+google_auth_oauthlib==1.0.0
+pip==23.1.2
+protobuf==4.22.3
+PyJWT==2.6.0
+PyJWT==2.6.0
+python-dotenv==1.0.0
+Requests==2.29.0
+SQLAlchemy==2.0.4
+Werkzeug==2.2.3
